@@ -1,0 +1,57 @@
+:root {
+    --background-color: #ffffff;
+    --text-color: #000000;
+    --header-color: #000000; /* Default heading color */
+    --button-bg-color: #007BFF;
+    --button-text-color: #ffffff;
+    --button-hover-bg-color: #0056b3;
+}
+
+body.dark-mode {
+    --background-color: #1e1e1e;
+    --text-color: #ffffff;
+    --header-color: #ffffff; /* Heading color in dark mode */
+    --button-bg-color: #6c757d;
+    --button-text-color: #ffffff;
+    --button-hover-bg-color: #5a6268;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--header-color); /* Heading colors */
+    transition: color 0.3s ease;
+}
+
+.theme-toggle-container {
+    display: flex;
+    justify-content: center; /* Centers the button horizontally */
+    margin-top: 20px;
+}
+
+button {
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+}
+
+button:hover {
+    background-color: var(--button-hover-bg-color);
+    transform: scale(1.05); /* Slightly enlarges the button on hover */
+}
+
+button:focus {
+    outline: none; /* Removes the default focus outline */
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* Adds a focus shadow */
+}

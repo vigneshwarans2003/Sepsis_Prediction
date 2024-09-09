@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sepsis - DashBoard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='New_Style.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='healthcare.png') }}">
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAhADIDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwC5bW2846AkkD+lRXkQQlCvbBBq7FKscZYHa2McDNULoHYvmsZYs/K4JBX8e/0NedzWZ61XEOnLVaFAlFO1QFBOKXUVaxlAY74yOGA75wR+FWXsrZm3mRxE4yGyAo9Rz/Koprm3uIIzcDzRuUsinB6EE/oDWnNdprYxVZzacSnHdCRWKMGKjJGapT3HmmV5VwUddpHUD0qzDptxeytNGwGDtDFcZPpx7U9LB4rzbcja6Nkow5zWjs3odFKotnuaERdoULqu4qCcjvRVVtQhDEccH++KKi51ckjTdmIyfxqRb6GOweC4h3Lyd2emayIG2TQiIZjdcMPXtmrE+5SHAyOhFKNnoZ4mkuWzIpJ4Hs5jvBhJHlnHO7Pp9M5qAxL9laVnUfNtVD1qKS0B3iCRRG2SUbjBx1FLDZ7QHZg0pALDORmqUbaGFKEaStF9TXtbho9MCSuioynBBAZc849feqM1yLjUJmVXYN8yFuvSoY7d8KwBSQjP0+tOSE20+QxLMh+QdATRGPKDpxUnJMrixkwP3A/KirH2uUcZHFFXqK8e7Haf/wAe9v8AVv5itE9KKKyR31dkZUn3qIP9en1oorY83qX16fhUEn/H23/XP+hooqTZlaiiiqMT/9k=" alt="NICE logo" class="logo">
+            <h1>KnowIT</h1>
+            
+            <a href="{{ url_for('web1') }}" class="prediction-box">Sepsis Predictor</a>
+        </div>
+    </header>
+    <main>
+        <section class="hero">
+            <img src="{{ url_for('static', filename='Sep_bg.jpg') }}" alt="Sepsis background" class="hero-image">
+            <div class="hero-text">
+                <h2>Sepsis - What IT is ?</h2>
+                <p>By Tech Professionsls<br>3 August 2024</p>
+            </div>
+        </section>
+        <section class="faqs">
+            
+            <div class="faqs-text">
+                
+                
+                <h3>SEPSIS INITIATIVE</h3>
+                <h1>FAQs</h1>
+            </div>
+        </section>    
+        <section class="intro">
+            <h2>Sepsis - Frequently Asked Questions</h2>
+        </section>
+        <section class="faq">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Common Signs of Sepsis</h3>
+                    <span class="faq-toggle">&#x25BC;</span>
+                </div>
+                <div class="faq-answer">
+                    <ul>
+                        <li>Fever</li>
+                        <li>Fast heart rate</li>
+                        <li>Rapid breathing</li>
+                        <li>Confusion</li>
+                        <li>Body pain</li>
+                    </ul>
+                    <p>It can lead to septic shock, multiple organ failure, and death.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Cause of Sepsis</h3>
+                    <span class="faq-toggle">&#x25BC;</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Bacterial infections cause most cases of sepsis. However, viral infections, such as COVID-19 or influenza; fungal infections; or noninfectious insults.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Organs Responsible</h3>
+                    <span class="faq-toggle">&#x25BC;</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Those that more commonly cause sepsis include infections of:</p>
+                    <ul>
+                        <li>Lungs, such as pneumonia</li>
+                        <li>Kidney, bladder, and other parts of the urinary system</li>
+                        <li>Digestive system</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Prevention From Sepsis</h3>
+                    <span class="faq-toggle">&#x25BC;</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Sepsis prevention is only possible by preventing infections with good and consistent hygiene and avoiding people with infections.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Solution Vaccine</h3>
+                    <span class="faq-toggle">&#x25BC;</span>
+                </div>
+                <div class="faq-answer">
+                    <p>The MenACWY vaccine is for meningitis, sepsis, and septicaemia (blood poisoning), which are very serious, potentially life-threatening illnesses that can lead to life-changing disabilities, such as amputations, hearing loss, and brain damage.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Immediate Steps if Affected by Sepsis</h3>
+                    <span class="faq-toggle">&#x25BC;</span>
+                </div>
+                <div class="faq-answer">
+                    <ul>
+                        <li>Consult a Doctor Nearby: Seek immediate medical attention from the nearest healthcare provider.</li>
+                        <li>Immediate Assessment and Diagnosis: Conduct diagnostic tests such as X-rays and CT scans to locate the infection source and assess organ involvement.</li>
+                        <li>Analyzing Symptoms: Monitor key symptoms including fever, heart rate, and oxygen saturation levels to evaluate the severity of the condition.</li>
+                        <li>Source Control: Remove the source of infection through procedures like draining abscesses, removing infected devices (e.g., catheters), or performing surgical interventions if necessary.</li>
+                        <li>Organ Support: Implement organ support measures such as dialysis if the kidneys are failing, along with other interventions to support affected organs.</li>
+                        <li>Monitoring and Follow-Up: Continuously monitor vital signs, blood work, and organ function to assess response to treatment and adjust care as needed.</li>
+                        <li>Rehabilitation: Once stabilized, patients may require physical therapy, occupational therapy, and psychological support to recover from the effects of sepsis and prolonged hospitalization.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+        item.querySelector('.faq-question').addEventListener('click', () => {
+            item.classList.toggle('active');
+        });
+    });
+});
+
+    </script>
+</body>
+</html>

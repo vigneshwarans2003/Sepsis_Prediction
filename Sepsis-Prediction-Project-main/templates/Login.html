@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>KnowIT</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='healthcare.png') }}">
+    <link rel="stylesheet" href="styles2.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button id="theme-toggle-container">Switch to Dark</button>
+    </div>
+    <div class="title"><h1> KnowIT </h1></div>
+
+    <br>
+    <br>
+    
+    <br>
+    <div class="container">
+        <div class="left"></div>
+        <div class="right">
+            <div class="formBox">
+                <form method="post" action="{{ url_for('login') }}">
+                    <p> Username</p>
+                    <input type="text" id="username" name="username" ="Name">
+                    <p>Password</p>
+                    <input type="password" id="password" name="password" placeholder="****">
+                    <br>
+                    <input type="submit"  value="Sign In">
+                    <a href="#">Forget Password</a>            
+                </form>
+            </div>
+        </div>
+
+    </div>    
+    <script>
+        function checkLogin(event) {
+            event.preventDefault();
+            var enteredUsername = document.getElementById("username").value;
+            var enteredPassword = document.getElementById("password").value;
+    
+            // Check if the entered credentials match the predefined credentials
+            if (enteredUsername === "Karthi" && enteredPassword === "KK") {
+                // Redirect to the desired page
+                window.location.href = "New.html";
+                return true;
+            } else {
+                alert("Invalid username or password. Please try again.");
+                return false;
+            }
+        }
+    </script>
+
+</body>
+</html>

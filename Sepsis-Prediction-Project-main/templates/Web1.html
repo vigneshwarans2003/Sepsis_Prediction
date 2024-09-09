@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sepsis Prediction</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='healthcare.png') }}">
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #72edf2 10%, #5151e5 100%);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+        .container {
+            margin-top: 50px;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .btn-primary, .prediction-box {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+        }
+        .btn-primary:hover, .prediction-box:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .result span {
+            color: #007bff;
+        }
+        .prediction-box {
+            color: white;
+            cursor: pointer;
+            width: 80px;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <center>
+            <h2 class="text-center mb-4">Sepsis Prediction</h2>
+        </center>
+        <form id="predictionForm" action="{{ url_for('predict') }}" method="POST">
+            <center>
+                <table>
+                    <tr>
+                        <td>HospAdmTime:</td>
+                        <td><input type="float" name="a" placeholder="Enter HospAdmTime"></td>
+                    </tr>
+                    <tr>
+                        <td>Age:</td>
+                        <td><input type="number" name="b" placeholder="Enter Age"></td>
+                    </tr>
+                    <tr>
+                        <td>ICULOS:</td>
+                        <td><input type="number" step="any" name="c" placeholder="Enter ICULOS" required></td>
+                    </tr>
+                    <tr>
+                        <td>Hour:</td>
+                        <td><input type="number" name="d" placeholder="Enter Hour"></td>
+                    </tr>
+                    <tr>
+                        <td>HR:</td>
+                        <td><input type="float" name="e" placeholder="Enter HR"></td>
+                    </tr>
+                    <tr>
+                        <td>PatientID:</td>
+                        <td><input type="number" name="f" placeholder="Enter PatientID"></td>
+                    </tr>
+                    <tr>
+                        <td>DBP:</td>
+                        <td><input type="float" name="g" placeholder="Enter DBP"></td>
+                    </tr>
+                    <tr>
+                        <td>SBP:</td>
+                        <td><input type="float" name="h" placeholder="Enter SBP"></td>
+                    </tr>
+                    <tr>
+                        <td>Resp:</td>
+                        <td><input type="float" name="i" placeholder="Enter Resp"></td>
+                    </tr>
+                    <tr>
+                        <td>Temp:</td>
+                        <td><input type="float" name="j" placeholder="Enter Temp"></td>
+                    </tr>
+                    <tr>
+                        <td>MAP:</td>
+                        <td><input type="float" name="k" placeholder="Enter MAP"></td>
+                    </tr>
+                    <tr>
+                        <td>Unit2:</td>
+                        <td><input type="number" name="l" placeholder="Enter Unit2"></td>
+                    </tr>
+                    <tr>
+                        <td>O2Sat:</td>
+                        <td><input type="float" name="m" placeholder="Enter O2Sat"></td>
+                    </tr>
+                    <tr>
+                        <td>Gender:</td>
+                        <td><input type="number" name="o" placeholder="Enter Gender"></td>
+                    </tr>
+                    <tr>
+                        <td>Unit 1:</td>
+                        <td><input type="number" name="p" placeholder="Enter Unit 1"></td>
+                    </tr>
+                    <tr>
+                        <td>FiO2:</td>
+                        <td><input type="float" name="q" placeholder="Enter FiO2"></td>
+                    </tr>
+                    <tr>
+                        <td>EtCO2:</td>
+                        <td><input type="float" name="r" placeholder="Enter EtCO2"></td>
+                    </tr>
+                </table>
+            </center>
+            <br>
+            <center>
+                <button type="submit" class="prediction-box">Predict</button>
+            </center>
+        </form>
+        
+    </div>
+</body>
+</html>

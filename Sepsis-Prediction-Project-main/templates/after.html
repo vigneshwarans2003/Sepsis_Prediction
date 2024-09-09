@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='healthcare.png') }}">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .result {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .result span {
+            color: #007bff;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #dc3545;
+        }
+        .btn-primary {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .pdf-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .pdf-button:hover {
+            background-color: #218838;
+        }
+        .chart-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Prediction Result</h2>
+        <center>
+        <table>  
+         <tr><td>
+        <p class="result">Prediction: <span>{{ prediction }}</span></p>
+        </td></tr>
+        <tr><td>
+        <p class="result">Probability: <span>{{ probability }}</span></p>
+        </td></tr>  
+    </table> 
+
+    {% if probability > 0.7 %}
+        <img src="{{ url_for('static', filename='Emergency_Light.gif') }}" alt="Emergency Light GIF">
+        <p class="message">Your condition is very serious. Immediately consult a doctor nearby. <br> <a href="#" class="btn-primary" onclick="alert('Appointment added successfully!')">click here for an auto-appointment</a>.</p>
+    {% elif probability > 0.5 %}
+        <img src="{{ url_for('static', filename='Doc_login.gif') }}" alt="Doctor Consultation GIF" width="280" height="250">
+        <p class="message">You have mild sepsis. Consult your doctor and be on medication.</p>
+    {% else %}
+        <img src="{{ url_for('static', filename='angel1.jpg') }}" alt="No Sepsis Image" width="250" height="250">
+        <p class="message" style="color: #28a745;">Don't worry, you have no sepsis.</p>
+    {% endif %}
+    
+    <a href="{{ url_for('index') }}" class="btn-primary">Back to Home</a>
+
+    <!-- Generate and Display Chart -->
+    <div class="chart-container">
+        <form id="chartForm">
+            <!-- Hidden fields to pass all form data to the chart generation route -->
+            <input type="hidden" name="e" value="{{ request.form.get('e') }}">
+            <input type="hidden" name="g" value="{{ request.form.get('g') }}">
+            <input type="hidden" name="h" value="{{ request.form.get('h') }}">
+            <input type="hidden" name="i" value="{{ request.form.get('i') }}">
+            <input type="hidden" name="j" value="{{ request.form.get('j') }}">
+            <input type="hidden" name="m" value="{{ request.form.get('m') }}">
+            <input type="hidden" name="q" value="{{ request.form.get('q') }}">
+            <input type="hidden" name="r" value="{{ request.form.get('r') }}">
+            <input type="hidden" name="k" value="{{ request.form.get('k') }}">
+            
+            <button type="button" onclick="generateChart()">Generate Chart</button>
+        </form>
+        <div id="chartContainer">
+            <img id="chartImage" src="" alt="Patient Data Chart" style="display: none;">
+        </div>
+    </div>
+
+    <!-- PDF Download Button -->
+    <form action="{{ url_for('generate_pdf') }}" method="post">
+        <!-- Hidden fields to pass all form data to the PDF generation route -->
+        <input type="hidden" name="a" value="{{ request.form.get('a') }}">
+        <input type="hidden" name="b" value="{{ request.form.get('b') }}">
+        <input type="hidden" name="c" value="{{ request.form.get('c') }}">
+        <input type="hidden" name="d" value="{{ request.form.get('d') }}">
+        <input type="hidden" name="e" value="{{ request.form.get('e') }}">
+        <input type="hidden" name="f" value="{{ request.form.get('f') }}">
+        <input type="hidden" name="g" value="{{ request.form.get('g') }}">
+        <input type="hidden" name="h" value="{{ request.form.get('h') }}">
+        <input type="hidden" name="i" value="{{ request.form.get('i') }}">
+        <input type="hidden" name="j" value="{{ request.form.get('j') }}">
+        <input type="hidden" name="k" value="{{ request.form.get('k') }}">
+        <input type="hidden" name="l" value="{{ request.form.get('l') }}">
+        <input type="hidden" name="m" value="{{ request.form.get('m') }}">
+        <input type="hidden" name="o" value="{{ request.form.get('o') }}">
+        <input type="hidden" name="p" value="{{ request.form.get('p') }}">
+        <input type="hidden" name="q" value="{{ request.form.get('q') }}">
+        <input type="hidden" name="r" value="{{ request.form.get('r') }}">
+        
+        <!-- Hidden fields for prediction and probability -->
+        <input type="hidden" name="prediction" value="{{ prediction }}">
+        <input type="hidden" name="probability" value="{{ probability }}">
+        
+        <button type="submit" class="pdf-button">Download PDF Report</button>
+    </form>
+    
+    </center>
+    </div>
+
+    <script>
+        function generateChart() {
+            var form = document.getElementById('chartForm');
+            var formData = new FormData(form);
+            
+            fetch('/generate_chart', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.chart) {
+                    var chartImage = document.getElementById('chartImage');
+                    chartImage.src = data.chart;
+                    chartImage.style.display = 'block';
+                } else if (data.error) {
+                    alert('Error generating chart: ' + data.error);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</body>
+</html>
